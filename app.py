@@ -73,6 +73,7 @@ class Check_distance:
     __longitude_1 = None
     __longitude_2 = None
     __unit = None
+    __distance = None
 
     def __init__(self, latitude_1, latitude_2, longitude_1, longitude_2):
         self.__latitude_1 = latitude_1
@@ -103,7 +104,11 @@ class Check_distance:
         dist = dist * 60 * 1.1515
         # dalam km
         dist = dist * 1.609344
+        self.__distance = dist
         return "their distance is {}".format(dist)
+    
+    def get_distance(self):
+        return self.__distance
     
 print("Client Name: ")
 name = sys.stdin.readline()
@@ -133,4 +138,15 @@ print(driver_1.show())
 distance = Check_distance(latitude,lat_driver,longitude,long_driver)
 
 print(distance.check())
+
+distance = int(distance.get_distance())
+print(distance)
+
+while distance >= 0:
+    # this logic should be api get lat long from mobile
+    print(distance)
+    distance -= 50
+    # this logic should be api get lat long from mobile
+    time.sleep(60)
+
 
